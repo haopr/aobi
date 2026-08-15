@@ -6,15 +6,21 @@ const distDir = path.join(root, "dist");
 const siteDir = path.join(root, "site");
 
 fs.mkdirSync(distDir, { recursive: true });
-fs.copyFileSync(path.join(siteDir, "index.html"), path.join(distDir, "index.html"));
-fs.copyFileSync(path.join(siteDir, "404.html"), path.join(distDir, "404.html"));
-fs.copyFileSync(path.join(siteDir, "aobi.png"), path.join(distDir, "aobi.png"));
-fs.copyFileSync(path.join(siteDir, "aobick.png"), path.join(distDir, "aobick.png"));
-fs.copyFileSync(path.join(siteDir, "aobibg.jpg"), path.join(distDir, "aobibg.jpg"));
-fs.copyFileSync(path.join(siteDir, "aobi_button.svg"), path.join(distDir, "aobi_button.svg"));
-fs.copyFileSync(path.join(siteDir, "aobi_close.svg"), path.join(distDir, "aobi_close.svg"));
-fs.copyFileSync(path.join(siteDir, "aobi_fixed_nobtn.svg"), path.join(distDir, "aobi_fixed_nobtn.svg"));
-fs.copyFileSync(path.join(siteDir, "w_aunt.png"), path.join(distDir, "w_aunt.png"));
+
+function copyDir(src, dest) {
+  for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
+    const from = path.join(src, entry.name);
+    const to = path.join(dest, entry.name);
+    if (entry.isDirectory()) {
+      fs.mkdirSync(to, { recursive: true });
+      copyDir(from, to);
+    } else {
+      fs.copyFileSync(from, to);
+    }
+  }
+}
+
+copyDir(siteDir, distDir);
 fs.writeFileSync(path.join(distDir, ".nojekyll"), "");
 
 const wiki404 = path.join(distDir, "wiki", "404.html");

@@ -8,6 +8,8 @@ const siteDir = path.join(root, "site");
 fs.mkdirSync(distDir, { recursive: true });
 fs.copyFileSync(path.join(siteDir, "index.html"), path.join(distDir, "index.html"));
 fs.copyFileSync(path.join(siteDir, "404.html"), path.join(distDir, "404.html"));
+fs.copyFileSync(path.join(siteDir, "aobi.png"), path.join(distDir, "aobi.png"));
+fs.copyFileSync(path.join(siteDir, "aobibg.jpg"), path.join(distDir, "aobibg.jpg"));
 fs.writeFileSync(path.join(distDir, ".nojekyll"), "");
 
 const wiki404 = path.join(distDir, "wiki", "404.html");

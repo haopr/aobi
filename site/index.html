@@ -44,13 +44,38 @@
         flex-direction: column;
       }
       .topbar { display: flex; align-items: center; justify-content: space-between; }
-      .brand { display: flex; align-items: center; gap: 10px; color: #2a5266; font-size: 17px; font-weight: 800; letter-spacing: .08em; text-shadow: 0 1px rgba(255,255,255,.8); }
-      .brand img { width: 58px; height: 58px; object-fit: contain; filter: drop-shadow(0 3px 2px rgba(27,72,78,.2)); }
+      .brand { display: inline-flex; align-items: center; }
+      .brand img { width: clamp(180px, 31vw, 296px); height: auto; object-fit: contain; filter: drop-shadow(0 3px 2px rgba(27,72,78,.2)); }
       .nav { display: flex; gap: 8px; }
       .nav a { padding: 8px 14px; border: 1px solid var(--line); border-radius: 99px; color: #3b6573; background: rgba(255,255,255,.43); font-size: 13px; backdrop-filter: blur(8px); transition: .2s ease; }
       .nav a:hover { color: #22566e; background: rgba(255,255,255,.8); transform: translateY(-1px); }
 
       main { width: min(900px, 100%); margin: auto; text-align: center; }
+      .dialog {
+        position: relative;
+        width: min(410px, 100%);
+        aspect-ratio: 820 / 600;
+        margin: 0 auto;
+        overflow: visible;
+        filter: drop-shadow(0 20px 30px rgba(35, 89, 47, .24));
+      }
+      .dialog-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; clip-path: inset(0); }
+      .dialog-close { position: absolute; z-index: 4; top: 4px; right: 4px; width: 31px; height: 31px; padding: 0; border: 0; background: transparent; cursor: pointer; transition: transform .16s ease, filter .16s ease; }
+      .dialog-close img { display: block; width: 100%; height: 100%; }
+      .dialog-close:hover { transform: rotate(8deg) scale(1.04); filter: brightness(1.08); }
+      .dialog-close:active { transform: scale(.9); }
+      .dialog-content { position: absolute; z-index: 2; top: 19%; right: 12%; bottom: 20%; left: 9%; display: grid; grid-template-columns: 92px minmax(0, 1fr); align-items: center; gap: 13px; padding: 20px 24px 18px 10px; color: #2f4e1e; font-size: 12px; line-height: 1.58; text-align: left; }
+      .dialog-character { display: block; width: 92px; height: auto; justify-self: center; }
+      .dialog-content p { margin: 0; }
+      .dialog-actions { position: absolute; z-index: 4; bottom: 2.8%; left: 50%; display: flex; gap: 8px; transform: translateX(-50%); }
+      .dialog-action { position: relative; width: 86px; height: 39px; padding: 0; border: 0; background: transparent; cursor: pointer; transition: transform .14s ease, filter .14s ease; }
+      .dialog-action img { display: block; width: 86px; height: 39px; }
+      .dialog-action span { position: absolute; inset: 0; display: grid; place-items: center; padding-top: 1px; color: #244b13; font-size: 12px; font-weight: 800; text-shadow: 0 1px rgba(255,255,255,.65); }
+      .dialog-action:hover { transform: translateY(-2px); filter: brightness(1.07); }
+      .dialog-action:active { transform: translateY(3px) scale(.96); filter: brightness(.96); }
+      .speech { position: absolute; z-index: 6; top: 38px; right: 28px; width: min(240px, calc(100% - 56px)); padding: 8px 11px; border: 3px solid #26720e; border-radius: 14px; color: #315b1e; background: #fffed0; box-shadow: 0 5px 0 rgba(38, 114, 14, .28); font-size: 12px; font-weight: 700; line-height: 1.45; text-align: left; opacity: 0; pointer-events: none; transform: translateY(-7px) scale(.96); transform-origin: top right; transition: opacity .18s ease, transform .18s ease; }
+      .speech::before { content: ""; position: absolute; top: -13px; right: 23px; width: 18px; height: 18px; background: #fffed0; border-left: 3px solid #26720e; border-top: 3px solid #26720e; transform: rotate(45deg); }
+      .speech.is-visible { opacity: 1; transform: translateY(0) scale(1); }
       .hero {
         width: min(690px, 100%);
         margin: 0 auto;
@@ -97,7 +122,14 @@
         body { overflow-y: auto; background-attachment: scroll; }
         .page { width: min(100% - 28px, 520px); padding: 14px 0 15px; }
         .nav { display: none; }
-        main { margin: 8vh auto 7vh; }
+        main { margin: 3vh auto 5vh; }
+        .dialog { width: min(410px, 100%); }
+        .dialog-content { top: 19%; right: 12%; bottom: 20%; left: 9%; grid-template-columns: 82px minmax(0, 1fr); gap: 10px; padding: 15px 19px 14px 7px; font-size: 11px; line-height: 1.48; }
+        .dialog-character { width: 82px; }
+        .dialog-action, .dialog-action img { width: 78px; height: 35px; }
+        .dialog-action span { font-size: 11px; }
+        .dialog-actions { gap: 5px; }
+        .speech { top: 36px; right: 26px; font-size: 11px; }
         .hero { padding: 21px 18px 20px; border-radius: 22px; }
         h1 { font-size: clamp(36px, 12vw, 56px); letter-spacing: .08em; }
         .lead { font-size: 13px; }
@@ -106,26 +138,51 @@
         .section p { min-height: 0; }
         .action { margin-top: 8px; }
       }
+      @media (max-width: 480px) {
+        .dialog-content { grid-template-columns: 70px minmax(0, 1fr); gap: 7px; padding: 13px 16px 12px 5px; font-size: 10px; line-height: 1.42; text-align: left; }
+        .dialog-character { width: 70px; }
+      }
     </style>
   </head>
   <body>
     <div class="page">
       <header class="topbar">
-        <a class="brand" href="./"><img src="aobi.png" alt="奥比岛" /><span>仓库</span></a>
-        <nav class="nav" aria-label="快捷导航"><a href="/aobi/wiki/">Wiki</a><a href="#av">视听中心</a><a href="#archaeology">考古</a></nav>
+        <a class="brand" href="./"><img src="aobick.png" alt="奥比岛仓库" /></a>
+        <nav class="nav" aria-label="快捷导航"><a href="/aobi/wiki/">Wiki</a></nav>
       </header>
 
       <main>
-        <section class="hero">
-          <p class="kicker">欢迎回到岛上</p>
-          <h1>奥比岛仓库</h1>
-          <p class="lead">由玩家共同维护的资料站，<strong>把岛上的快乐好好保存下来。</strong></p>
+        <section class="dialog" aria-label="奥比岛仓库提示框">
+          <img class="dialog-bg" src="aobi_fixed_nobtn.svg" alt="" />
+          <button class="dialog-close" type="button" aria-label="关闭提示框"><img src="aobi_close.svg" alt="" /></button>
+          <div class="speech" role="status" aria-live="polite"></div>
+          <div class="dialog-content">
+            <img class="dialog-character" src="w_aunt.png" alt="W阿姨" />
+            <p>《奥比岛仓库》由玩家@极限的哥哥发起，并由所有热爱奥比岛的玩家共同维护。仓库中的所有内容均来自互联网公开信息。本仓库将永久保存有关“奥比岛”的一切，无论何时，小奥比们都可以来到仓库重温岛上的快乐时光。</p>
+          </div>
+          <div class="dialog-actions">
+            <button class="dialog-action" type="button" data-message="知道就好"><img src="aobi_button.svg" alt="" /><span>知道了</span></button>
+            <button class="dialog-action" type="button" data-go-wiki="true"><img src="aobi_button.svg" alt="" /><span>立即前往</span></button>
+          </div>
         </section>
-        <section class="sections" aria-label="仓库入口">
-          <a class="section" href="/aobi/wiki/"><h2>Wiki</h2><p>地图、NPC、游戏资料与大事件，岛上的完整记忆。</p><span class="action">进入资料馆 →</span></a>
-          <div class="section soon" id="av"><h2>视听中心</h2><p>音乐、动画、宣传片和玩家影像。</p><span class="action">即将开放</span></div>
-          <div class="section soon" id="archaeology"><h2>考古</h2><p>早期版本、消失场景和线下活动。</p><span class="action">持续整理中</span></div>
-        </section>
+
+        <div class="sections" aria-label="仓库入口">
+          <a class="section" href="/aobi/wiki/">
+            <h2>百科资料</h2>
+            <p>整理岛民、地图、活动与任务记录，随时回来查找。</p>
+            <span class="action">进入 Wiki</span>
+          </a>
+          <a class="section soon" href="/aobi/wiki/">
+            <h2>影音档案</h2>
+            <p>保存动画、音乐与回忆片段，把岛上的声音留下来。</p>
+            <span class="action">慢慢补齐</span>
+          </a>
+          <a class="section soon" href="/aobi/wiki/">
+            <h2>考古记录</h2>
+            <p>收集旧页面、截图与玩家线索，拼回奥比岛的来时路。</p>
+            <span class="action">一起维护</span>
+          </a>
+        </div>
       </main>
 
       <footer>
@@ -133,5 +190,26 @@
         <p>游戏内容版权归属广州百田信息科技有限公司 · <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></p>
       </footer>
     </div>
+    <script>
+      const speech = document.querySelector(".speech");
+      const closeButton = document.querySelector(".dialog-close");
+      const showSpeech = (message) => {
+        speech.textContent = message;
+        speech.classList.add("is-visible");
+      };
+      closeButton.addEventListener("click", () => {
+        showSpeech("不可关闭，W阿姨会一直盯着你一直盯着你一直盯着你一直盯着你……");
+      });
+      document.querySelector('[data-message="知道就好"]').addEventListener("click", (event) => {
+        event.currentTarget.animate(
+          [{ transform: "translateY(3px) scale(.96)" }, { transform: "translateY(0) scale(1)" }],
+          { duration: 180, easing: "ease-out" }
+        );
+        showSpeech("知道就好");
+      });
+      document.querySelector("[data-go-wiki]").addEventListener("click", () => {
+        window.location.href = "/aobi/wiki/";
+      });
+    </script>
   </body>
 </html>

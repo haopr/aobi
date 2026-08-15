@@ -16,6 +16,29 @@ require(["gitbook"], function (gitbook) {
     }
   }
 
+  function ensureDock() {
+    if (document.querySelector(".aobi-dock")) {
+      return;
+    }
+
+    var dock = document.createElement("nav");
+    dock.className = "aobi-dock";
+    dock.setAttribute("aria-label", "仓库入口");
+    dock.innerHTML =
+      '<div class="tab-dock">' +
+        '<div class="tab-bg"></div>' +
+        '<a class="tab-icon tab-map" href="/aobi/wiki/maps/" aria-label="地图"></a>' +
+        '<div class="tab-links">' +
+          '<a class="tab-button tab-button-short" href="/aobi/wiki/">Wiki</a>' +
+          '<a class="tab-button tab-button-long" href="/aobi/wiki/">图书馆二楼</a>' +
+          '<a class="tab-button tab-button-long" href="/aobi/wiki/">监控室</a>' +
+          '<a class="tab-button tab-button-long" href="/aobi/wiki/">神秘世界</a>' +
+        '</div>' +
+        '<a class="tab-icon tab-home" href="/aobi/" aria-label="首页"></a>' +
+      '</div>';
+    document.body.appendChild(dock);
+  }
+
   function ensureLightbox() {
     if (document.querySelector(".tt-lightbox")) {
       return document.querySelector(".tt-lightbox");
@@ -52,6 +75,7 @@ require(["gitbook"], function (gitbook) {
 
   gitbook.events.bind("page.change", function () {
     ensureHomeLink();
+    ensureDock();
     bindImages();
   });
 });

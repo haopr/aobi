@@ -1,0 +1,24 @@
+{
+  "title": "奥比岛仓库Wiki",
+  "description": "由玩家共同维护的奥比岛百科，永久保存岛上的快乐时光。",
+  "author": "奥比岛仓库",
+  "language": "zh-hans",
+  "root": "./wiki",
+  "structure": {
+    "readme": "welcome.md",
+    "summary": "SUMMARY.md"
+  },
+  "plugins": [
+    "-sharing",
+    "-fontsettings",
+    "aobi"
+  ],
+  "pluginsConfig": {
+    "theme-default": {
+      "showLevel": false
+    }
+  },
+  "styles": {
+    "website": "styles/website.css"
+  }
+}

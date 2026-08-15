@@ -1,0 +1,17 @@
+{
+  "name": "aobi-warehouse",
+  "private": true,
+  "description": "奥比岛仓库 — 玩家共同维护的奥比岛资料站",
+  "scripts": {
+    "prepare:wiki": "node scripts/prepare.mjs",
+    "predev": "node scripts/prepare.mjs",
+    "dev": "honkit serve .",
+    "prebuild": "node scripts/prepare.mjs",
+    "build": "honkit build . dist/wiki && node scripts/copy-home.mjs",
+    "preview": "npm run build && npx --yes serve dist"
+  },
+  "devDependencies": {
+    "honkit": "^6.1.4",
+    "honkit-plugin-aobi": "file:./plugins/honkit-plugin-aobi"
+  }
+}

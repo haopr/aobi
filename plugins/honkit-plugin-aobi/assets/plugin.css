@@ -1,0 +1,181 @@
+.book-summary {
+  background: #f7f3ea;
+  border-right: 1px solid #ead9b8;
+}
+
+.book-summary ul.summary li a,
+.book-summary ul.summary li span {
+  color: #5a4a32;
+}
+
+.book-summary ul.summary li.active > a {
+  color: #2f7d3a;
+  font-weight: 700;
+  background: rgba(90, 160, 70, 0.12);
+}
+
+.book-summary ul.summary li a:hover {
+  color: #2f7d3a;
+}
+
+.book-header {
+  background: rgba(255, 252, 246, 0.92);
+}
+
+.book-body,
+.book-body .body-inner,
+.page-wrapper {
+  background: #fffaf1;
+}
+
+.markdown-section {
+  color: #3d3428;
+  line-height: 1.8;
+}
+
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3 {
+  color: #2c2418;
+  border-bottom-color: #f0e0c0;
+}
+
+.markdown-section a {
+  color: #2f7d3a;
+}
+
+.markdown-section table {
+  display: table;
+  width: 100%;
+}
+
+.markdown-section table td,
+.markdown-section table th {
+  border-color: #ead9b8;
+}
+
+.markdown-section table tr:nth-child(2n) {
+  background: #fff6e6;
+}
+
+.tt-center {
+  text-align: center;
+}
+
+.tt-right {
+  text-align: right;
+  color: #8a7a64;
+  font-size: 13px;
+}
+
+.tt-spacer {
+  height: 0.6em;
+  margin: 0;
+}
+
+.tt-img {
+  max-width: 100%;
+  height: auto;
+  cursor: zoom-in;
+  border-radius: 6px;
+}
+
+.tt-alert {
+  margin: 1em 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border-left: 4px solid #ccc;
+  background: #f7f7f7;
+}
+
+.tt-alert.tt-danger {
+  border-left-color: #d94a4a;
+  background: #fff1f1;
+}
+
+.tt-alert.tt-info {
+  border-left-color: #3b82c4;
+  background: #eef6ff;
+}
+
+.tt-alert.tt-warning {
+  border-left-color: #e2a100;
+  background: #fff7e0;
+}
+
+.tt-alert.tt-success,
+.tt-alert.tt-tip {
+  border-left-color: #2f7d3a;
+  background: #eef8ef;
+}
+
+.tt-link-card {
+  display: block;
+  padding: 12px 14px;
+  border: 1px solid #ead9b8;
+  border-radius: 10px;
+  background: #fff;
+  text-decoration: none !important;
+  color: #2f7d3a !important;
+  box-shadow: 0 2px 0 #f0e0c0;
+}
+
+.tt-link-card:hover {
+  background: #fff6e6;
+}
+
+.tt-bilibili {
+  position: relative;
+  width: 100%;
+  padding-top: 62%;
+  margin: 1em 0;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tt-bilibili iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tt-home-link {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #fff3cc;
+  color: #5a4a32 !important;
+  font-size: 12px;
+  text-decoration: none !important;
+}
+
+.tt-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(20, 14, 8, 0.78);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  cursor: zoom-out;
+}
+
+.tt-lightbox.is-open {
+  display: flex;
+}
+
+.tt-lightbox img {
+  max-width: 92vw;
+  max-height: 92vh;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.gitbook-link {
+  display: none !important;
+}

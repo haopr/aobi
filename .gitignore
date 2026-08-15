@@ -1,0 +1,6 @@
+node_modules/
+dist/
+_book/
+.DS_Store
+*.log
+wiki/assets

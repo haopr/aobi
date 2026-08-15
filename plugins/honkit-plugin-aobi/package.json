@@ -1,0 +1,10 @@
+{
+  "name": "honkit-plugin-aobi",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "engines": {
+    "gitbook": ">=3.0.0",
+    "honkit": ">=4.0.0"
+  }
+}

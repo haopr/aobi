@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>奥比岛仓库</title>
+    <meta
+      name="description"
+      content="奥比岛仓库：由玩家共同维护的奥比岛资料站，收录 Wiki、视听与考古。"
+    />
+    <link rel="icon" href="wiki/.topwrite/assets/奥比岛logo.png" />
+    <style>
+      :root {
+        --ink: #3d3428;
+        --muted: #7a6a54;
+        --green: #3f8a46;
+        --green-deep: #2f6d36;
+        --yellow: #f4d35e;
+        --cream: #fff6df;
+        --card: #fffdf7;
+        --line: #ead9b8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        color: var(--ink);
+        font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        background:
+          radial-gradient(circle at top, #fff4c8 0%, transparent 38%),
+          linear-gradient(180deg, #d8eef8 0%, #fff6df 42%, #f7e7b8 100%);
+        min-height: 100%;
+      }
+
+      body {
+        min-height: 100vh;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .wrap {
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0 8px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+      }
+
+      .brand img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+      }
+
+      nav {
+        display: flex;
+        gap: 16px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      nav a:hover {
+        color: var(--green-deep);
+      }
+
+      .hero {
+        margin: 18px 0 28px;
+        padding: 18px;
+        background: rgba(255, 253, 247, 0.72);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: 0 10px 0 rgba(90, 122, 58, 0.08);
+      }
+
+      .hero img {
+        display: block;
+        width: 100%;
+        border-radius: 16px;
+      }
+
+      .intro {
+        text-align: center;
+        margin: 22px 0 8px;
+      }
+
+      .intro h1 {
+        margin: 0 0 8px;
+        font-size: clamp(28px, 5vw, 44px);
+        letter-spacing: 0.04em;
+        text-shadow: 2px 3px 0 #7aa24a;
+        color: #ffe36a;
+        -webkit-text-stroke: 4px #4d7a32;
+        paint-order: stroke fill;
+      }
+
+      .intro p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .modules {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin: 28px 0 48px;
+      }
+
+      .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: 230px;
+        padding: 22px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: 0 8px 0 #f0e0c0;
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+      }
+
+      .card.ready:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 0 #e4d09c;
+      }
+
+      .card.soon {
+        opacity: 0.82;
+      }
+
+      .emoji {
+        font-size: 36px;
+        line-height: 1;
+      }
+
+      .card h2 {
+        margin: 14px 0 8px;
+        font-size: 22px;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+        flex: 1;
+      }
+
+      .badge {
+        align-self: flex-start;
+        margin-top: 16px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--yellow);
+        color: #5a4a32;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .badge.wait {
+        background: #eee4d0;
+        color: var(--muted);
+      }
+
+      footer {
+        padding: 8px 0 28px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.8;
+        text-align: center;
+      }
+
+      footer a {
+        color: var(--green-deep);
+        text-decoration: underline;
+      }
+
+      @media (max-width: 800px) {
+        nav {
+          display: none;
+        }
+
+        .modules {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <img src="wiki/.topwrite/assets/奥比岛logo.png" alt="奥比岛" />
+          <span>奥比岛仓库</span>
+        </div>
+        <nav>
+          <a href="wiki/">Wiki</a>
+          <a href="#av">视听中心</a>
+          <a href="#archaeology">考古</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <img src="wiki/.topwrite/assets/banner.jpeg" alt="奥比岛仓库" />
+        <div class="intro">
+          <h1>奥比岛仓库</h1>
+          <p>本仓库将永久保存有关「奥比岛」的一切，欢迎小奥比回家。</p>
+        </div>
+      </section>
+
+      <section class="modules">
+        <a class="card ready" href="wiki/">
+          <div class="emoji">📖</div>
+          <h2>奥比岛 Wiki</h2>
+          <p>从入岛须知、地图变迁到大事件与图鉴，复刻原仓库文档，继续由玩家共同维护。</p>
+          <span class="badge">进入 Wiki</span>
+        </a>
+        <div class="card soon" id="av">
+          <div class="emoji">🎬</div>
+          <h2>奥比岛视听中心</h2>
+          <p>收集岛上的音乐、动画、宣传片和玩家影像，让声音和画面也能被仓库保管。</p>
+          <span class="badge wait">即将开放</span>
+        </div>
+        <div class="card soon" id="archaeology">
+          <div class="emoji">🏺</div>
+          <h2>奥比岛考古</h2>
+          <p>整理早期版本、消失场景、线下活动和被时间掩埋的边角材料。</p>
+          <span class="badge wait">即将开放</span>
+        </div>
+      </section>
+
+      <footer>
+        <p>《奥比岛仓库》由玩家发起并共同维护，内容来自互联网公开信息。</p>
+        <p>
+          游戏内容版权归属广州百田信息科技有限公司。本站内容采用
+          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener"
+            >CC BY-NC-SA 4.0</a
+          >
+          许可。
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+/* 奥比岛仓库 Wiki 补充样式，主体在 honkit-plugin-aobi */
+.book-summary .book-brand,
+.book-summary .title {
+  font-weight: 700;
+}

@@ -1,0 +1,22 @@
+{
+    "title": "奥比岛仓库",
+    "plugins": [
+        "qrcode",
+        "bilibili",
+        "video",
+        "audio",
+        "image-zoom",
+        "lunrjs",
+        "baidu-tongji",
+        "watermark",
+        "qingyan"
+    ],
+    "pluginsConfig": {
+        "baidu-tongji": {
+            "siteid": "4f79005ad591f7f098e318d1aa2b2ed1"
+        },
+        "watermark": {
+            "text": "欢迎来到奥比岛仓库"
+        }
+    }
+}

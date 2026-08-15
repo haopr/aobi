@@ -11,14 +11,16 @@
     <link rel="icon" href="wiki/.topwrite/assets/奥比岛logo.png" />
     <style>
       :root {
-        --ink: #3d3428;
-        --muted: #7a6a54;
-        --green: #3f8a46;
-        --green-deep: #2f6d36;
-        --yellow: #f4d35e;
-        --cream: #fff6df;
-        --card: #fffdf7;
-        --line: #ead9b8;
+        --ink: #4a3a24;
+        --muted: #7d6a4d;
+        --sky: #9fd6f2;
+        --sky-deep: #6bb8e0;
+        --grass: #7cbc4a;
+        --grass-deep: #4e8f32;
+        --wood: #c9843a;
+        --wood-deep: #8a5420;
+        --paper: #fff6df;
+        --board: #fff8e8;
       }
 
       * {
@@ -28,17 +30,17 @@
       html,
       body {
         margin: 0;
-        padding: 0;
+        min-height: 100%;
         color: var(--ink);
         font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-        background:
-          radial-gradient(circle at top, #fff4c8 0%, transparent 38%),
-          linear-gradient(180deg, #d8eef8 0%, #fff6df 42%, #f7e7b8 100%);
-        min-height: 100%;
+        background: var(--sky);
       }
 
       body {
-        min-height: 100vh;
+        overflow-x: hidden;
+        background:
+          radial-gradient(ellipse 80% 40% at 50% -10%, #fff8d2 0%, transparent 70%),
+          linear-gradient(180deg, #8fd0f0 0%, #bfe6f7 28%, #fff3c4 62%, #8ec85a 100%);
       }
 
       a {
@@ -46,166 +48,233 @@
         text-decoration: none;
       }
 
-      .wrap {
-        width: min(1080px, calc(100% - 32px));
+      .sky {
+        position: relative;
+        width: min(1120px, calc(100% - 28px));
         margin: 0 auto;
+        padding: 18px 0 0;
       }
 
-      header {
+      .topbar {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 18px 0 8px;
+        margin-bottom: 14px;
       }
 
       .brand {
         display: flex;
         align-items: center;
         gap: 10px;
-        font-weight: 700;
+        font-weight: 800;
+        letter-spacing: 0.04em;
       }
 
       .brand img {
-        width: 42px;
-        height: 42px;
+        width: 46px;
+        height: 46px;
         object-fit: contain;
+        filter: drop-shadow(0 2px 0 rgba(80, 120, 40, 0.2));
       }
 
-      nav {
+      .topbar nav {
         display: flex;
-        gap: 16px;
+        gap: 8px;
+      }
+
+      .topbar nav a {
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.55);
         color: var(--muted);
-        font-size: 14px;
+        font-size: 13px;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
       }
 
-      nav a:hover {
-        color: var(--green-deep);
+      .topbar nav a:hover {
+        background: #fff8d4;
+        color: var(--wood-deep);
       }
 
-      .hero {
-        margin: 18px 0 28px;
-        padding: 18px;
-        background: rgba(255, 253, 247, 0.72);
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        box-shadow: 0 10px 0 rgba(90, 122, 58, 0.08);
+      .plaza {
+        position: relative;
+        border: 6px solid #fffdf6;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow:
+          0 16px 0 rgba(78, 143, 50, 0.16),
+          0 28px 40px rgba(80, 90, 40, 0.12);
       }
 
-      .hero img {
+      .plaza img {
         display: block;
         width: 100%;
-        border-radius: 16px;
+        height: auto;
       }
 
-      .intro {
-        text-align: center;
-        margin: 22px 0 8px;
-      }
-
-      .intro h1 {
-        margin: 0 0 8px;
-        font-size: clamp(28px, 5vw, 44px);
-        letter-spacing: 0.04em;
-        text-shadow: 2px 3px 0 #7aa24a;
-        color: #ffe36a;
-        -webkit-text-stroke: 4px #4d7a32;
-        paint-order: stroke fill;
-      }
-
-      .intro p {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      .modules {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-        margin: 28px 0 48px;
-      }
-
-      .card {
-        position: relative;
+      .welcome {
         display: flex;
-        flex-direction: column;
-        min-height: 230px;
-        padding: 22px;
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 20px;
-        box-shadow: 0 8px 0 #f0e0c0;
-        transition: transform 0.18s ease, box-shadow 0.18s ease;
+        justify-content: center;
+        margin: -22px 0 8px;
+        position: relative;
+        z-index: 2;
       }
 
-      .card.ready:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 0 #e4d09c;
-      }
-
-      .card.soon {
-        opacity: 0.82;
-      }
-
-      .emoji {
-        font-size: 36px;
-        line-height: 1;
-      }
-
-      .card h2 {
-        margin: 14px 0 8px;
-        font-size: 22px;
-      }
-
-      .card p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.7;
-        flex: 1;
-      }
-
-      .badge {
-        align-self: flex-start;
-        margin-top: 16px;
-        padding: 6px 10px;
+      .welcome span {
+        max-width: 90%;
+        padding: 10px 22px;
         border-radius: 999px;
-        background: var(--yellow);
-        color: #5a4a32;
-        font-size: 13px;
+        background: #fff8d8;
+        border: 3px solid #f0c14b;
+        box-shadow: 0 6px 0 #d7a322;
+        font-size: 15px;
         font-weight: 700;
       }
 
-      .badge.wait {
-        background: #eee4d0;
-        color: var(--muted);
+      .doors {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        width: min(1120px, calc(100% - 28px));
+        margin: 28px auto 20px;
+      }
+
+      .door {
+        position: relative;
+        min-height: 280px;
+        padding: 22px 20px 20px;
+        border-radius: 22px 22px 18px 18px;
+        display: flex;
+        flex-direction: column;
+        color: #fffdf6;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .door::before {
+        content: "";
+        position: absolute;
+        inset: 10px 10px 18px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 2px dashed rgba(255, 255, 255, 0.28);
+        z-index: -1;
+      }
+
+      .door.wiki {
+        background: linear-gradient(180deg, #5aa8d8 0%, #3d8ec4 55%, #2f6f9a 100%);
+        box-shadow: 0 10px 0 #24587a;
+      }
+
+      .door.av {
+        background: linear-gradient(180deg, #e07a6a 0%, #c45b55 55%, #9a3f45 100%);
+        box-shadow: 0 10px 0 #6e2c32;
+      }
+
+      .door.dig {
+        background: linear-gradient(180deg, #d2a24a 0%, #b8832f 55%, #8d6420 100%);
+        box-shadow: 0 10px 0 #6a4a16;
+      }
+
+      .door.ready:hover {
+        transform: translateY(-5px);
+      }
+
+      .door.soon {
+        filter: saturate(0.78);
+      }
+
+      .sign {
+        align-self: flex-start;
+        padding: 4px 10px;
+        border-radius: 8px;
+        background: #fff3b0;
+        color: #7a4d12;
+        font-size: 12px;
+        font-weight: 800;
+        box-shadow: 0 3px 0 #d7a322;
+      }
+
+      .door h2 {
+        margin: 28px 0 10px;
+        font-size: 28px;
+        letter-spacing: 0.06em;
+        text-shadow: 0 3px 0 rgba(0, 0, 0, 0.18);
+      }
+
+      .door p {
+        margin: 0;
+        line-height: 1.7;
+        color: rgba(255, 253, 246, 0.92);
+        flex: 1;
+      }
+
+      .go {
+        margin-top: 18px;
+        align-self: flex-start;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: #ffe36a;
+        color: #5a3f12;
+        font-weight: 800;
+        box-shadow: 0 4px 0 #d7a322;
+      }
+
+      .door.soon .go {
+        background: rgba(255, 255, 255, 0.22);
+        color: #fff8e4;
+        box-shadow: none;
+      }
+
+      .ground {
+        height: 42px;
+        background:
+          repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.08) 0 18px,
+            transparent 18px 46px
+          ),
+          linear-gradient(180deg, #6aaa3d, #4e8f32);
+        box-shadow: inset 0 8px 0 rgba(255, 255, 255, 0.08);
       }
 
       footer {
-        padding: 8px 0 28px;
-        color: var(--muted);
-        font-size: 13px;
-        line-height: 1.8;
+        width: min(820px, calc(100% - 28px));
+        margin: 0 auto;
+        padding: 22px 0 36px;
         text-align: center;
+        color: #355820;
+        font-size: 13px;
+        line-height: 1.85;
       }
 
       footer a {
-        color: var(--green-deep);
+        color: #214c16;
         text-decoration: underline;
       }
 
       @media (max-width: 800px) {
-        nav {
+        .topbar nav {
           display: none;
         }
 
-        .modules {
+        .doors {
           grid-template-columns: 1fr;
+        }
+
+        .door {
+          min-height: 220px;
+        }
+
+        .welcome span {
+          font-size: 13px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <header>
+    <div class="sky">
+      <header class="topbar">
         <div class="brand">
           <img src="wiki/.topwrite/assets/奥比岛logo.png" alt="奥比岛" />
           <span>奥比岛仓库</span>
@@ -217,45 +286,45 @@
         </nav>
       </header>
 
-      <section class="hero">
+      <section class="plaza">
         <img src="wiki/.topwrite/assets/banner.jpeg" alt="奥比岛仓库" />
-        <div class="intro">
-          <h1>奥比岛仓库</h1>
-          <p>本仓库将永久保存有关「奥比岛」的一切，欢迎小奥比回家。</p>
-        </div>
       </section>
-
-      <section class="modules">
-        <a class="card ready" href="wiki/">
-          <div class="emoji">📖</div>
-          <h2>奥比岛 Wiki</h2>
-          <p>从入岛须知、地图变迁到大事件与图鉴，复刻原仓库文档，继续由玩家共同维护。</p>
-          <span class="badge">进入 Wiki</span>
-        </a>
-        <div class="card soon" id="av">
-          <div class="emoji">🎬</div>
-          <h2>奥比岛视听中心</h2>
-          <p>收集岛上的音乐、动画、宣传片和玩家影像，让声音和画面也能被仓库保管。</p>
-          <span class="badge wait">即将开放</span>
-        </div>
-        <div class="card soon" id="archaeology">
-          <div class="emoji">🏺</div>
-          <h2>奥比岛考古</h2>
-          <p>整理早期版本、消失场景、线下活动和被时间掩埋的边角材料。</p>
-          <span class="badge wait">即将开放</span>
-        </div>
-      </section>
-
-      <footer>
-        <p>《奥比岛仓库》由玩家发起并共同维护，内容来自互联网公开信息。</p>
-        <p>
-          游戏内容版权归属广州百田信息科技有限公司。本站内容采用
-          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener"
-            >CC BY-NC-SA 4.0</a
-          >
-          许可。
-        </p>
-      </footer>
     </div>
+
+    <div class="welcome">
+      <span>欢迎回家。本仓库将永久保存有关「奥比岛」的一切。</span>
+    </div>
+
+    <section class="doors">
+      <a class="door wiki ready" href="wiki/">
+        <span class="sign">今日开放</span>
+        <h2>Wiki</h2>
+        <p>入岛须知、地图变迁、NPC 和大事件，都收在这座资料馆里。</p>
+        <span class="go">推开门 →</span>
+      </a>
+      <div class="door av soon" id="av">
+        <span class="sign">整修中</span>
+        <h2>视听中心</h2>
+        <p>音乐、动画、宣传片和玩家影像，晚点在这里放映。</p>
+        <span class="go">即将开放</span>
+      </div>
+      <div class="door dig soon" id="archaeology">
+        <span class="sign">发掘中</span>
+        <h2>考古</h2>
+        <p>早期版本、消失场景和线下活动，还在一层一层挖出来。</p>
+        <span class="go">即将开放</span>
+      </div>
+    </section>
+
+    <div class="ground"></div>
+
+    <footer>
+      <p>《奥比岛仓库》由玩家发起并共同维护，内容来自互联网公开信息。</p>
+      <p>
+        游戏内容版权归属广州百田信息科技有限公司。本站内容采用
+        <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>
+        许可。
+      </p>
+    </footer>
   </body>
 </html>

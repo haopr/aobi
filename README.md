@@ -1,24 +1,25 @@
 # 奥比岛仓库
 
-玩家共同维护的奥比岛资料站。当前已上线首页和「奥比岛 Wiki」，视听中心与考古稍后开放。
+欢迎回家。这里由玩家共同维护，用来永久保存有关奥比岛的一切。
 
-## 本地预览
+**打开仓库：** [https://haopr.github.io/aobi/](https://haopr.github.io/aobi/)
 
-```bash
-npm install
-npm run dev
-```
+## 仓库里有什么
 
-浏览器打开 Honkit 提示的地址，即可阅读 Wiki。完整首页 + Wiki 请使用：
+- **奥比岛 Wiki**：入岛须知、地图、NPC、大事件和图鉴，已经开放
+- **奥比岛视听中心**：音乐、动画和影像，即将开放
+- **奥比岛考古**：早期版本、消失场景和线下活动，即将开放
 
-```bash
-npm run preview
-```
+Wiki 入口：[https://haopr.github.io/aobi/wiki/](https://haopr.github.io/aobi/wiki/)
 
-## 发布到 GitHub Pages
+## 给小奥比的说明
 
-1. 把本仓库推到 GitHub
-2. 在仓库 Settings → Pages 中选择 **GitHub Actions**
-3. 推送到 `main` 或 `master` 后，Actions 会自动构建并发布
+仓库中的内容来自互联网公开信息，欢迎阅读、回忆和分享。如果要二次创作，请注明「素材来自《奥比岛仓库》」。
 
-Wiki 正文仍在 `wiki/` 里用 Markdown 编写，图片在 `wiki/.topwrite/assets/`。
+想补充栏目、纠错或把你的奥比岛记忆放进来，可以联系仓库管理员。
+
+## 版权
+
+游戏内容版权归属广州百田信息科技有限公司。
+
+本站整理的图文采用 [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/) 许可：署名、非商业性使用、相同方式共享。

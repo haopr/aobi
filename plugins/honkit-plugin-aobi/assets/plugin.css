@@ -193,7 +193,7 @@
 .aobi-dock .tab-dock {
   position: relative;
   width: 100%;
-  aspect-ratio: 1121 / 164;
+  aspect-ratio: 1121 / 156;
   filter: drop-shadow(0 14px 18px rgba(35, 89, 47, 0.2));
 }
 .aobi-dock .tab-bg {
